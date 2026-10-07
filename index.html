@@ -15,21 +15,25 @@
   <meta name="theme-color" content="#050505">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <!-- Compartilhamento (Open Graph / Twitter) -->
+  <!-- Compartilhamento (Open Graph / Twitter). [FALTA: domínio final] troque nos 3 endereços abaixo. -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Contabilidade na Prática">
   <meta property="og:title" content="Black Contábil Vitalícia — Condição exclusiva para alunos">
   <meta property="og:description" content="Entre no Grupo VIP do WhatsApp e saiba de tudo quase um mês antes do resto do público. Revelação oficial: 07/10 às 20h.">
-  <meta property="og:url" content="https://stephaniekalynka.com/black/">
-  <meta property="og:image" content="https://stephaniekalynka.com/black/og-image.jpg">
+  <meta property="og:url" content="https://[FALTA: domínio final]/">
+  <meta property="og:image" content="https://[FALTA: domínio final]/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Black Contábil Vitalícia — Professora Stephanie Kalynka">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Black Contábil Vitalícia — Condição exclusiva para alunos">
   <meta name="twitter:description" content="Entre no Grupo VIP do WhatsApp e saiba de tudo quase um mês antes do resto do público. Revelação oficial: 07/10 às 20h.">
-  <meta name="twitter:image" content="https://stephaniekalynka.com/black/og-image.jpg">
+  <meta name="twitter:image" content="https://[FALTA: domínio final]/og-image.jpg">
+
+  <!-- Imagem do hero (LCP): cada tamanho baixa só a sua -->
+  <link rel="preload" as="image" href="assets/img/hero-mobile.webp" type="image/webp" media="(max-width: 1023px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/hero-desktop-v2.webp" type="image/webp" media="(min-width: 1024px)" fetchpriority="high">
 
   <!-- Fonte: Archivo variável (peso 100–900, largura 62–125) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,6 +107,12 @@
 
     <!-- 1. Hero + formulário -->
     <section class="hero" aria-labelledby="hero-title">
+      <picture class="hero-media">
+        <source media="(min-width: 1024px)" srcset="assets/img/hero-desktop-v2.webp" width="1960" height="1062">
+        <img src="assets/img/hero-mobile.webp" width="1100" height="765" fetchpriority="high"
+             alt="Professora Stephanie Kalynka ao lado dos cursos da Contabilidade na Prática">
+      </picture>
+
       <div class="glow glow--form" aria-hidden="true"></div>
 
       <div class="hero-particles" aria-hidden="true">
@@ -134,8 +144,7 @@
 
           <div class="hero-brand">
             <div class="hero-logo logo-shimmer">
-              <span class="hl-top">Contabilidade na Prática apresenta</span>
-              <strong class="hl-main gold-text">Black Contábil Vitalícia</strong>
+              <img src="assets/img/logo-black-contabil-vitalicia.webp" width="811" height="195" alt="Black Contábil Vitalícia">
               <span class="logo-shimmer__fx" aria-hidden="true"></span>
             </div>
             <p class="badge hero-date">REVELAÇÃO OFICIAL: 07/10 ÀS 20h</p>
@@ -461,9 +470,10 @@
   <!-- 6. Rodapé -->
   <footer class="footer">
     <div class="container footer__inner">
-      <strong class="footer__logo gold-text">Black Contábil Vitalícia</strong>
+      <img class="footer__logo" src="assets/img/logo-black-contabil-vitalicia.webp" width="811" height="195"
+           alt="Black Contábil Vitalícia" loading="lazy" decoding="async">
       <p class="footer__copy">© 2026 Contabilidade na Prática — Stephanie Kalynka. Todos os direitos reservados.</p>
-      <a class="footer__link" href="https://stephaniekalynka.com/" target="_blank" rel="noopener">Política de privacidade</a>
+      <a class="footer__link" href="[FALTA: URL da política de privacidade]" target="_blank" rel="noopener">Política de privacidade</a>
     </div>
   </footer>
 
