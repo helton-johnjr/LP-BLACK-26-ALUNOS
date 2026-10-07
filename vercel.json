@@ -4,20 +4,23 @@
   "outputDirectory": ".",
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/black-alunos/assets/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
-      "source": "/css/(.*)",
+      "source": "/black-alunos/css/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
     },
     {
-      "source": "/(.*)",
+      "source": "/black-alunos/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "https://sk0426.vercel.app/$1" }
   ]
 }

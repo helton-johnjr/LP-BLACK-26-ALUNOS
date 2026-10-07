@@ -1,7 +1,7 @@
 const ENDPOINT = 'https://n8n.grupohbdigital.com.br/webhook/f1b7ec83-db8e-47d1-b898-425f9fe074e2';
 const GRUPO_VIP = 'https://sndflw.com/i/fBWWum8QlKtHc04hMk80';
 const REVELACAO = '2026-10-26T20:00:00-03:00';
-const DESTINO_SUCESSO = 'obrigado'; // página de obrigado (Vercel cleanUrls)
+const DESTINO_SUCESSO = '/black-alunos/obrigado'; // página de obrigado (Vercel cleanUrls)
 
 document.documentElement.classList.add('js');
 
