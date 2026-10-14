@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./black-alunos/index.html', './black-alunos/obrigado.html', './black-alunos/design-system.html', './black-alunos/js/**/*.js'],
+  content: [
+    './black-alunos/index.html', './black-alunos/obrigado.html', './black-alunos/design-system.html', './black-alunos/js/**/*.js',
+    './black-nao-alunos/index.html', './black-nao-alunos/obrigado.html', './black-nao-alunos/design-system.html', './black-nao-alunos/js/**/*.js',
+  ],
   theme: {
     screens: {
       sm: '641px',

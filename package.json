@@ -4,7 +4,10 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tailwindcss -i src/input.css -o black-alunos/css/styles.css --minify",
-    "dev": "tailwindcss -i src/input.css -o black-alunos/css/styles.css --watch"
+    "dev": "tailwindcss -i src/input.css -o black-alunos/css/styles.css --watch",
+    "build:nao-alunos": "tailwindcss -i src/input-nao-alunos.css -o black-nao-alunos/css/styles.css --minify",
+    "dev:nao-alunos": "tailwindcss -i src/input-nao-alunos.css -o black-nao-alunos/css/styles.css --watch",
+    "build:all": "npm run build && npm run build:nao-alunos"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
