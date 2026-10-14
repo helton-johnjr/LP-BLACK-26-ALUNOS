@@ -30,6 +30,8 @@
   ],
   "rewrites": [
     { "source": "/black-alunos", "destination": "/black-alunos/index" },
+    { "source": "/black", "destination": "https://lp-black-26-nao-alunos.vercel.app/black" },
+    { "source": "/black/(.*)", "destination": "https://lp-black-26-nao-alunos.vercel.app/black/$1" },
     { "source": "/(.*)", "destination": "https://sk0426.vercel.app/$1" }
   ]
 }
