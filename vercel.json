@@ -28,6 +28,18 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/bio",
+      "destination": "/black?utm_source=instagram&utm_medium=organico&utm_campaign=sk0826&utm_content=bio",
+      "permanent": false
+    },
+    {
+      "source": "/especial-whatsapp",
+      "destination": "/black?utm_source=whatsapp&utm_medium=organico&utm_campaign=sk0826&utm_content=grupos-antigos",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/black-alunos", "destination": "/black-alunos/index" },
     { "source": "/black", "destination": "https://lp-black-26-nao-alunos.vercel.app/black" },
