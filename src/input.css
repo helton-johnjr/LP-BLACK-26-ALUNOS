@@ -172,7 +172,7 @@
   @media (min-width: 1024px) {
     .hero {
       --copy-w: 600px;
-      --hero-w: min(calc((100vw - max(var(--gutter), (100vw - 1280px) / 2 + var(--gutter)) - var(--copy-w)) / 0.52), calc((100svh - var(--bar-h)) * 2.4));
+      --hero-w: min(calc((100vw - max(var(--gutter), (100vw - 1280px) / 2 + var(--gutter)) - var(--copy-w)) / 0.45), calc((100svh - var(--bar-h)) * 2.62));
       min-height: calc(100vh - var(--bar-h));
       min-height: calc(100svh - var(--bar-h));
       display: flex; align-items: center;
@@ -186,18 +186,18 @@
     .hero__form { margin-top: 1.125rem; }
     .hero__media { inset: 0; width: auto; }
     .hero__frame {
-      inset: auto; top: 50%; right: calc(var(--hero-w) * -0.03);
+      inset: auto; top: 50%; right: calc(var(--hero-w) * -0.08);
       width: var(--hero-w); aspect-ratio: 1960 / 765; transform: translateY(-50%);
     }
     .hero__img {
       object-fit: cover; object-position: center;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 36%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 84%, transparent 100%);
-              mask-image: linear-gradient(to right, transparent 0%, #000 36%), linear-gradient(to bottom, transparent 0%, #000 18%, #000 84%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 90%, transparent 100%);
+              mask-image: linear-gradient(to right, transparent 0%, #000 34%), linear-gradient(to bottom, transparent 0%, #000 12%, #000 90%, transparent 100%);
     }
     .hero__glow { left: 78%; top: 44%; width: 520px; height: 520px; opacity: 1; filter: blur(48px); }
   }
   @media (min-width: 1280px) and (min-height: 860px) {
-    .hero { --copy-w: 640px; }
+    .hero { --copy-w: 600px; }
     .hero__logo { width: 280px; }
     .hero__form { margin-top: 1.5rem; }
   }
@@ -298,9 +298,10 @@
   }
 
   /* ---------- Faixa animada (fita de isolamento) ---------- */
-  .tape { position: relative; overflow: hidden; z-index: 1; margin-block: 2.5rem; padding-block: 1.75rem; }
+  /* o padding acompanha a largura: a faixa girada sobe ~2,5% da largura em cada ponta */
+  .tape { position: relative; overflow: hidden; z-index: 1; margin-block: 2.5rem; padding-block: max(2.25rem, 3vw); }
   .tape__band {
-    position: relative; width: 140vw; margin-left: -20vw; overflow: hidden;
+    position: relative; width: 120vw; margin-left: -10vw; overflow: hidden;
     background: var(--accent);
     transform: rotate(-2deg);
     box-shadow: 0 16px 50px -18px rgba(247, 223, 14, .45);
