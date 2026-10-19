@@ -307,6 +307,10 @@
     transform: rotate(-2deg);
     box-shadow: 0 16px 50px -18px rgba(247, 223, 14, .45);
   }
+  /* a primeira faixa encosta na dobra: sem margem em cima, a ponta girada sobe sobre o fim do hero */
+  .hero + .tape { margin-top: 0; padding-top: .5rem; }
+  /* em telas altas sobra espaço embaixo do formulário: a faixa sobe e aparece já na primeira dobra */
+  @media (min-width: 1024px) and (min-height: 880px) { .hero + .tape { margin-top: -3rem; } }
   .tape--reverse .tape__band { transform: rotate(2deg); }
   .tape__band::before, .tape__band::after {
     content: ""; position: absolute; left: 0; right: 0; height: 8px; z-index: 2;
@@ -555,7 +559,7 @@
     animation: glowFloat 12s ease-in-out infinite alternate;
   }
   .thanks__logo { width: 200px; height: auto; }
-  .thanks__title em { font-style: normal; color: var(--accent); }
+  /* sem cor própria: herda a tarja do .h1 em (texto escuro no amarelo), igual ao hero */
   .thanks__text { margin: 0; max-width: 48ch; color: var(--text-muted); }
   .thanks__cta { width: 100%; max-width: 26rem; }
   @media (min-width: 641px) {
