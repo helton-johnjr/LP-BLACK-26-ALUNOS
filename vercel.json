@@ -38,6 +38,11 @@
       "source": "/especial-whatsapp",
       "destination": "/black?utm_source=whatsapp&utm_medium=organico&utm_campaign=black26&utm_content=grupos-antigos",
       "permanent": false
+    },
+    {
+      "source": "/black-2026",
+      "destination": "/black?utm_source=instagram&utm_medium=organico&utm_campaign=black26&utm_content=stories",
+      "permanent": false
     }
   ],
   "rewrites": [
