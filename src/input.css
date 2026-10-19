@@ -299,7 +299,8 @@
 
   /* ---------- Faixa animada (fita de isolamento) ---------- */
   /* o padding acompanha a largura: a faixa girada sobe ~2,5% da largura em cada ponta */
-  .tape { position: relative; overflow: hidden; z-index: 1; margin-block: 2.5rem; padding-block: max(2.25rem, 3vw); }
+  /* clip só na horizontal: o brilho da faixa não fica cortado em linha reta em cima e embaixo */
+  .tape { position: relative; overflow: hidden; overflow: clip visible; z-index: 1; margin-block: 2.5rem; padding-block: max(2.25rem, 3vw); }
   .tape__band {
     position: relative; width: 120vw; margin-left: -10vw; overflow: hidden;
     background: var(--accent);
@@ -335,6 +336,8 @@
   .section { position: relative; padding-block: 3.5rem; }
   @media (min-width: 1024px) { .section { padding-block: 5.5rem; } }
   .section--glow { background: radial-gradient(640px 260px at 50% 0%, rgba(247, 223, 14, .07), rgba(247, 223, 14, 0) 70%); }
+  /* depois da faixa o brilho desce, para não marcar uma linha no topo da seção */
+  .tape + .section--glow { background: radial-gradient(640px 260px at 50% 160px, rgba(247, 223, 14, .07), rgba(247, 223, 14, 0) 70%); }
   .section-head { max-width: 52rem; margin-bottom: 1.75rem; }
   .section-head--center { margin-inline: auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
   .section-sub { margin: .75rem 0 0; color: var(--text-muted); max-width: 65ch; }
