@@ -2,6 +2,9 @@ const ENDPOINT = 'https://n8n.grupohbdigital.com.br/webhook/black-alunos';
 const GRUPO_VIP = 'https://sndflw.com/i/fBWWum8QlKtHc04hMk80';
 const REVELACAO = '2026-10-26T20:00:00-03:00';
 const DESTINO_SUCESSO = '/black-alunos/obrigado'; // página de obrigado (Vercel cleanUrls)
+const FORM_ID = 'sk-bf26-captura-alunos';
+const FORM_NOME = 'Black Contábil Vitalícia | Captura Alunos';
+const FUSO = 'America/Sao_Paulo'; // data e hora do lead no horário de Brasília
 
 document.documentElement.classList.add('js');
 
@@ -104,10 +107,42 @@ function marcarErro(input, mensagem) {
   if (erro) erro.textContent = mensagem || '';
 }
 
+/* ---------- Rastreio: todas as utm_* e ids de clique dos anúncios ---------- */
+// mesmo formato da página de não alunos: estas chaves vão sempre no payload (vazias se não vierem),
+// e qualquer outra utm_* que vier na URL (utm_adset...) entra também
+const RASTREIO_FIXO = [
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id',
+  'fbclid', 'gclid', 'gbraid', 'wbraid', 'ttclid', 'msclkid', 'src', 'sck',
+];
+const CHAVE_RASTREIO = 'sk-bf26-rastreio';
+const VALIDADE_RASTREIO = 30 * 86400000; // 30 dias
+
+function rastreioDaUrl() {
+  const achados = {};
+  new URLSearchParams(window.location.search).forEach((valor, chave) => {
+    const nome = chave.toLowerCase();
+    if (valor && (nome.startsWith('utm_') || RASTREIO_FIXO.includes(nome))) achados[nome] = valor;
+  });
+  return achados;
+}
+
+// a URL atual manda; sem nada na URL, vale o último rastreio salvo (quem saiu e voltou depois)
+function lerRastreio() {
+  let rastreio = rastreioDaUrl();
+  try {
+    if (Object.keys(rastreio).length) {
+      localStorage.setItem(CHAVE_RASTREIO, JSON.stringify({ salvo_em: Date.now(), rastreio }));
+    } else {
+      const salvo = JSON.parse(localStorage.getItem(CHAVE_RASTREIO));
+      if (salvo && Date.now() - salvo.salvo_em < VALIDADE_RASTREIO) rastreio = salvo.rastreio;
+    }
+  } catch (erro) { /* sem storage: fica só com o que veio na URL */ }
+  return rastreio;
+}
+
 function lerUtms() {
-  const params = new URLSearchParams(window.location.search);
-  return ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
-    .reduce((acc, chave) => ({ ...acc, [chave]: params.get(chave) || '' }), {});
+  const vazios = Object.fromEntries(RASTREIO_FIXO.map((chave) => [chave, '']));
+  return { ...vazios, ...lerRastreio() };
 }
 
 function iniciarFormulario(form) {
@@ -169,12 +204,19 @@ function iniciarFormulario(form) {
     botao.setAttribute('aria-busy', 'true');
     rotulo.textContent = 'ENVIANDO…';
 
+    const agora = new Date();
     const payload = {
       email: email.value.trim(),
       whatsapp: `55${digitosWhatsApp(whatsapp.value)}`,
-      origem: 'sk-bf26-captura-alunos',
+      form_id: FORM_ID,
+      form_nome: FORM_NOME,
+      form_local: form.dataset.form, // qual dos dois formulários da página: topo ou final
+      data: agora.toLocaleDateString('pt-BR', { timeZone: FUSO }),
+      hora: agora.toLocaleTimeString('pt-BR', { timeZone: FUSO, hour12: false }),
+      enviado_em: agora.toISOString(),
+      page_url: window.location.href,
+      origem: FORM_ID,               // campos antigos, mantidos para não quebrar o que já lê "origem" e "url"
       url: window.location.href,
-      enviado_em: new Date().toISOString(),
       ...lerUtms(),
     };
 
