@@ -182,6 +182,8 @@ function iniciarFormulario(form) {
     sucesso.hidden = false;
     sucesso.querySelector('[data-success-title]').focus({ preventScroll: true });
     if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+    // evento para o Google Tag Manager (GTM-TC2WPHZ9): gatilho de conversão "generate_lead"
+    (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_id: FORM_ID, form_local: form.dataset.form });
     // o lead segue para a página de obrigado, que leva ao grupo
     setTimeout(() => { window.location.href = DESTINO_SUCESSO; }, 1500);
   }
