@@ -209,7 +209,8 @@ function iniciarCtaFixo() {
   const estado = { heroNaTela: true, heroPassou: false, finalNaTela: false };
 
   const atualizar = () => {
-    const mostrar = mobile.matches && estado.heroPassou && !estado.heroNaTela && !estado.finalNaTela;
+    // fica visível desde o carregamento; só sai de cena quando o formulário final aparece
+    const mostrar = mobile.matches && !estado.finalNaTela;
     barra.classList.toggle('is-visible', mostrar);
     barra.inert = !mostrar;
     barra.setAttribute('aria-hidden', String(!mostrar));

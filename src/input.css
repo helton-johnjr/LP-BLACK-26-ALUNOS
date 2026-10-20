@@ -124,8 +124,8 @@
   .cd__n { display: inline-block; width: 2ch; text-align: right; font-weight: 800; }
 
   /* ---------- 2. Hero ---------- */
-  .hero { position: relative; isolation: isolate; overflow: hidden; }
-  .hero__inner { position: relative; z-index: 2; padding-block: 1rem 0; }
+  .hero { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; }
+  .hero__inner { position: relative; z-index: 2; padding-block: .75rem 0; }
   .hero__copy { display: flex; flex-direction: column; align-items: flex-start; }
   .hero__seal { margin-bottom: .75rem; }
   .hero__brand { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; }
@@ -138,13 +138,14 @@
   .perspective { perspective: 2000px; }
 
   /* mídia: mobile = faixa depois do formulário, nada atrás dele */
-  .hero__media { position: relative; z-index: 0; margin-top: 1.25rem; }
+  /* no celular a imagem abre a página, como na referência */
+  .hero__media { position: relative; z-index: 0; order: -1; margin-top: 0; }
   .hero__frame { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
   .hero__img {
     position: absolute; inset: 0; width: 100%; height: 100%; max-width: none;
     object-fit: cover; object-position: left center;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 84%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, #000 26%, #000 84%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
   }
   .hero__glow {
     position: absolute; left: 64%; top: 48%; width: 260px; height: 260px; border-radius: 9999px;
@@ -155,6 +156,8 @@
   }
 
   @media (min-width: 641px) {
+    .hero { display: block; }
+    .hero__media { order: 0; }
     .hero__inner { padding-block: 2.5rem; }
     .hero__copy { max-width: 54%; }
     .hero__media { position: absolute; top: 0; right: 0; bottom: 0; width: 50%; margin: 0; }
