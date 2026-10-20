@@ -39,6 +39,14 @@
   <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
   </symbol>
+  <!-- Lucide: badge-check -->
+  <symbol id="i-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/>
+  </symbol>
+  <!-- Lucide: calendar-days -->
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/>
+  </symbol>
   <!-- Lucide: circle-check -->
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
@@ -59,7 +67,7 @@
       <span data-cd-running>PARA A REVELAÇÃO DA OFERTA</span>
       <span class="topbar__done" data-cd-done hidden>AGORA — A OFERTA FOI REVELADA</span>
     </p>
-    <span class="pill pill--gold topbar__seal">CONDIÇÃO EXCLUSIVA PARA ALUNOS</span>
+    <span class="pill pill--selo topbar__seal"><svg class="pill__icon" aria-hidden="true"><use href="#i-badge"/></svg>CONDIÇÃO EXCLUSIVA PARA ALUNOS</span>
   </div>
 </div>
 
@@ -69,11 +77,11 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero__inner">
       <div class="hero__copy">
-        <span class="pill pill--gold hero__seal sm:hidden hero-in" style="--i:0">CONDIÇÃO EXCLUSIVA PARA ALUNOS</span>
+        <span class="pill pill--selo hero__seal sm:hidden hero-in" style="--i:0"><svg class="pill__icon" aria-hidden="true"><use href="#i-badge"/></svg>CONDIÇÃO EXCLUSIVA PARA ALUNOS</span>
 
         <div class="hero__brand">
           <img class="hero__logo hero-in" style="--i:1" src="/black-alunos/assets/img/logo-black-contabil-vitalicia.png?v=20261019b" width="300" height="72" alt="Black Contábil Vitalícia">
-          <span class="pill pill--gold hero-in" style="--i:2">REVELAÇÃO OFICIAL: 26/10 ÀS 20h</span>
+          <span class="pill pill--data hero-in" style="--i:2"><svg class="pill__icon" aria-hidden="true"><use href="#i-calendar"/></svg>REVELAÇÃO OFICIAL: 26/10 ÀS 20h</span>
         </div>
 
         <h1 id="hero-title" class="h1 hero__title hero-in" style="--i:3">Você <em>NUNCA MAIS</em> vai precisar gastar <em>UM REAL</em> com curso de contabilidade.</h1>
