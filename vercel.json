@@ -30,6 +30,11 @@
   ],
   "redirects": [
     {
+      "source": "/especial",
+      "destination": "https://pay.hotmart.com/K108193696G?checkoutMode=10&bid=1793043623265&sck=grupo",
+      "permanent": false
+    },
+    {
       "source": "/bio",
       "destination": "/black?utm_source=instagram&utm_medium=organico&utm_campaign=black26&utm_content=bio",
       "permanent": false
