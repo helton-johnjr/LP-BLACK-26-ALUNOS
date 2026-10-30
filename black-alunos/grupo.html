@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TC2WPHZ9');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Redirecionando para o grupo | Black Contábil Vitalícia</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070708">
+  <link rel="icon" href="/black-alunos/favicon/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/black-alunos/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/black-alunos/favicon/apple-touch-icon.png">
+  <link rel="preload" href="/black-alunos/assets/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- sem JS, o navegador segue sozinho para o grupo depois de 8s -->
+  <noscript><meta http-equiv="refresh" content="8;url=https://sndflw.com/i/mvZaITPIGsW5WCkUo0Yl"></noscript>
+  <style>
+    @font-face{font-family:Montserrat;font-weight:800;font-display:swap;src:url(/black-alunos/assets/fonts/montserrat-latin-800-normal.woff2) format("woff2")}
+    @font-face{font-family:"Open Sans";font-weight:400;font-display:swap;src:url(/black-alunos/assets/fonts/open-sans-latin-400-normal.woff2) format("woff2")}
+    @font-face{font-family:"Open Sans";font-weight:600;font-display:swap;src:url(/black-alunos/assets/fonts/open-sans-latin-600-normal.woff2) format("woff2")}
+    :root{--bg:#070708;--surface:#131316;--text:#f5f5f4;--text-muted:#a1a1aa;--accent:#f7df0e;--action:#25d366;--action-ink:#06210f}
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:"Open Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    main{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:32px 20px;position:relative;overflow:hidden;text-align:center}
+    main::before{content:"";position:absolute;width:560px;height:560px;left:50%;top:38%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(37,211,102,.14),transparent 65%);pointer-events:none}
+    .box{position:relative;width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center;gap:24px}
+    .logo{width:220px;height:auto;display:block}
+    h1{font-family:Montserrat,system-ui,sans-serif;font-weight:800;font-size:clamp(1.5rem,6vw,1.9rem);line-height:1.2;margin:0}
+    h1 em{font-style:normal;color:var(--accent)}
+    p{margin:0;color:var(--text-muted);font-size:1rem;line-height:1.55}
+    .count{font-family:Montserrat,system-ui,sans-serif;font-weight:800;font-size:3.5rem;line-height:1;color:var(--action);font-variant-numeric:tabular-nums}
+    .track{width:100%;height:8px;border-radius:99px;background:var(--surface);overflow:hidden}
+    .fill{display:block;height:100%;width:0;border-radius:inherit;background:var(--action)}
+    .fill.run{width:100%;transition:width 5s linear}
+    .btn{display:inline-block;padding:14px 26px;border-radius:12px;background:var(--action);color:var(--action-ink);font-family:Montserrat,system-ui,sans-serif;font-weight:800;font-size:.95rem;text-decoration:none;letter-spacing:.01em}
+    .btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+    .hint{font-size:.85rem}
+    @media (prefers-reduced-motion:reduce){.fill.run{transition:none;width:100%}}
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TC2WPHZ9"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <main>
+    <div class="box">
+      <img class="logo" src="/black-alunos/assets/img/logo-black-contabil-vitalicia.png?v=20261019b" width="300" height="72" alt="Black Contábil Vitalícia">
+      <h1>Estamos te levando para o <em>grupo VIP</em>…</h1>
+      <p>Em instantes você será redirecionado para o grupo de WhatsApp. É lá que enviaremos todas as informações.</p>
+      <div class="count" id="contagem" aria-live="off">5</div>
+      <div class="track" role="progressbar" aria-label="Redirecionando para o grupo" aria-valuemin="0" aria-valuemax="100"><span class="fill" id="barra"></span></div>
+      <a class="btn" id="grupo" href="https://sndflw.com/i/mvZaITPIGsW5WCkUo0Yl">Entrar agora no grupo</a>
+      <p class="hint">Se nada acontecer, toque no botão acima.</p>
+    </div>
+  </main>
+
+  <script>
+  (function () {
+    var GRUPO_VIP = 'https://sndflw.com/i/mvZaITPIGsW5WCkUo0Yl';
+    var ESPERA = 5000; // ms que a pessoa fica na página
+    var FORM_ID = 'sk-bf26-redirecionamento-grupo';
+
+    /* ---------- UTMs e ids de clique: mesmo formato e mesma chave das LPs ---------- */
+    var FIXO = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id',
+                'fbclid','gclid','gbraid','wbraid','ttclid','msclkid','src','sck'];
+    var CHAVE = 'sk-bf26-rastreio', VALIDADE = 30 * 86400000;
+
+    function daUrl() {
+      var achados = {};
+      new URLSearchParams(location.search).forEach(function (valor, chave) {
+        var nome = chave.toLowerCase();
+        if (valor && (nome.indexOf('utm_') === 0 || FIXO.indexOf(nome) > -1)) achados[nome] = valor;
+      });
+      return achados;
+    }
+    function rastreio() {
+      var r = daUrl();
+      try {
+        if (Object.keys(r).length) {
+          localStorage.setItem(CHAVE, JSON.stringify({ salvo_em: Date.now(), rastreio: r }));
+        } else {
+          var s = JSON.parse(localStorage.getItem(CHAVE));
+          if (s && Date.now() - s.salvo_em < VALIDADE) r = s.rastreio;
+        }
+      } catch (e) {}
+      return r;
+    }
+
+    /* ---------- Lead: mesmo evento do formulário das LPs, o GTM dispara o pixel ---------- */
+    var utms = rastreio();
+    var evento = { event: 'generate_lead', form_id: FORM_ID, form_local: 'redirecionamento', page_url: location.href };
+    FIXO.forEach(function (k) { evento[k] = utms[k] || ''; });
+    Object.keys(utms).forEach(function (k) { evento[k] = utms[k]; });
+    (window.dataLayer = window.dataLayer || []).push(evento);
+
+    /* ---------- Contagem e redirecionamento ---------- */
+    var contagem = document.getElementById('contagem');
+    var barra = document.getElementById('barra');
+    var restante = Math.round(ESPERA / 1000);
+    var ir = function () { location.replace(GRUPO_VIP); };
+
+    document.getElementById('grupo').addEventListener('click', function (ev) {
+      ev.preventDefault();
+      ir();
+    });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { barra.className = 'fill run'; }); });
+    var tick = setInterval(function () {
+      restante -= 1;
+      if (restante > 0) contagem.textContent = restante;
+      else clearInterval(tick);
+    }, 1000);
+    setTimeout(ir, ESPERA);
+  })();
+  </script>
+</body>
+</html>
