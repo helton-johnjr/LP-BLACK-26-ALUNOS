@@ -49,7 +49,10 @@ Payload enviado:
 }
 ```
 
-O Meta Pixel não vem instalado. Se você instalar, o evento `Lead` já dispara no sucesso.
+**Rastreamento (GTM-TC2WPHZ9):** o Pixel da Meta, o GA4 e a API de Conversões rodam todos pelo GTM (web + server).
+A página **não** chama `fbq` nem `gtag`: ela só faz `dataLayer.push` de `generate_lead` quando o webhook responde 2xx,
+com `user_data` (e-mail e telefone) dentro. O GTM dispara o Lead a partir desse evento. O contrato completo, para
+reaproveitar em qualquer LP nova, está em [`GTM-CONTRATO-DATALAYER.md`](GTM-CONTRATO-DATALAYER.md).
 
 ## 4. Recompilar o CSS
 

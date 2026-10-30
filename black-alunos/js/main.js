@@ -145,6 +145,26 @@ function lerUtms() {
   return { ...vazios, ...lerRastreio() };
 }
 
+/* ---------- Dados do lead para o GTM (contrato user_data) ---------- */
+// Padrão para TODAS as LPs: o GTM lê estes campos do dataLayer (user_data.*) e não depende mais
+// de seletores do DOM. Veja GTM-CONTRATO-DATALAYER.md.
+function montarUserData(form) {
+  const campo = (nome) => form.querySelector(`[name="${nome}"]`);
+  const email = campo('email');
+  const whatsapp = campo('whatsapp');
+  const nome = campo('nome'); // opcional: só existe em LPs com campo de nome
+  const userData = {};
+  if (email && email.value.trim()) userData.email_address = email.value.trim().toLowerCase();
+  const tel = whatsapp ? digitosWhatsApp(whatsapp.value) : '';
+  if (tel) userData.phone_number = `+55${tel}`;
+  if (nome && nome.value.trim()) {
+    const partes = nome.value.trim().split(/\s+/);
+    userData.address = { first_name: partes[0] };
+    if (partes.length > 1) userData.address.last_name = partes[partes.length - 1];
+  }
+  return userData;
+}
+
 function iniciarFormulario(form) {
   const card = form.closest('[data-form-card]');
   const email = form.querySelector('[name="email"]');
@@ -181,9 +201,18 @@ function iniciarFormulario(form) {
     form.hidden = true;
     sucesso.hidden = false;
     sucesso.querySelector('[data-success-title]').focus({ preventScroll: true });
-    if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-    // evento para o Google Tag Manager (GTM-TC2WPHZ9): gatilho de conversão "generate_lead"
-    (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_id: FORM_ID, form_local: form.dataset.form });
+    // O Pixel da Meta NÃO é chamado aqui: o GTM dispara o Lead (navegador + servidor, com o mesmo event_id).
+    // Chamar fbq direto geraria um Lead duplicado, sem event_id, que a Meta não consegue deduplicar.
+    // Evento de conversão para o GTM (GTM-TC2WPHZ9): só depois que o webhook respondeu 2xx.
+    (window.dataLayer = window.dataLayer || []).push({
+      event: 'generate_lead',
+      form_id: FORM_ID,
+      form_nome: FORM_NOME,
+      form_local: form.dataset.form,
+      page_url: window.location.href,
+      user_data: montarUserData(form),
+      ...lerUtms(),
+    });
     // o lead segue para a página de obrigado, que leva ao grupo
     setTimeout(() => { window.location.href = DESTINO_SUCESSO; }, 1500);
   }
