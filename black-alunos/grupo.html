@@ -66,6 +66,8 @@
     var GRUPO_VIP = 'https://chat.whatsapp.com/BW0kHJdkvMLCwLrH6RlNNa';
     var ESPERA = 5000; // ms que a pessoa fica na página
     var FORM_ID = 'sk-bf26-redirecionamento-grupo';
+    var ENDPOINT = 'https://n8n.grupohbdigital.com.br/webhook/black-do-milhao';
+    var FUSO = 'America/Sao_Paulo';
 
     /* ---------- UTMs e ids de clique: mesmo formato e mesma chave das LPs ---------- */
     var FIXO = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id',
@@ -99,6 +101,25 @@
     FIXO.forEach(function (k) { evento[k] = utms[k] || ''; });
     Object.keys(utms).forEach(function (k) { evento[k] = utms[k]; });
     (window.dataLayer = window.dataLayer || []).push(evento);
+
+    /* ---------- Webhook (n8n): mesmo payload das capturas, sem e-mail e WhatsApp ---------- */
+    var agora = new Date();
+    var payload = {
+      email: '', whatsapp: '',
+      form_id: FORM_ID,
+      form_nome: 'Black Contábil Vitalícia | Redirecionamento ao grupo',
+      form_local: 'redirecionamento',
+      data: agora.toLocaleDateString('pt-BR', { timeZone: FUSO }),
+      hora: agora.toLocaleTimeString('pt-BR', { timeZone: FUSO, hour12: false }),
+      enviado_em: agora.toISOString(),
+      page_url: location.href
+    };
+    FIXO.forEach(function (k) { payload[k] = utms[k] || ''; });
+    Object.keys(utms).forEach(function (k) { payload[k] = utms[k]; });
+    try {
+      // keepalive: o envio termina mesmo se a pessoa clicar e sair antes dos 5s
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true }).catch(function () {});
+    } catch (e) {}
 
     /* ---------- Contagem e redirecionamento ---------- */
     var contagem = document.getElementById('contagem');
