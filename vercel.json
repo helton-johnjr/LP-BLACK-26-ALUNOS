@@ -34,6 +34,11 @@
       "permanent": false
     },
     {
+      "source": "/alunos-especial",
+      "destination": "https://pay.hotmart.com/K108193696G?off=5gmfofvi&checkoutMode=10&sck=grupo",
+      "permanent": false
+    },
+    {
       "source": "/bio",
       "destination": "/black?utm_source=instagram&utm_medium=organico&utm_campaign=black26&utm_content=bio",
       "permanent": false
