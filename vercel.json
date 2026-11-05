@@ -30,7 +30,7 @@
   "redirects": [
     {
       "source": "/especial",
-      "destination": "https://pay.hotmart.com/K108193696G?checkoutMode=10&bid=1793043623265&sck=grupo",
+      "destination": "/black/oferta",
       "permanent": false
     },
     {
